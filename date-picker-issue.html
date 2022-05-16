@@ -1,0 +1,66 @@
+<div id="study_area_0" class="row">
+
+	<div class="form-group col-md-4 col-ms-6">
+		<lable class="">Completion Month|Year <span class="text-red">*</span></lable>
+		<input type="text" class="form-control fstinput monthonly" placeholder="mm/yyyy" name="completion_10th" id="completion_10th" autocomplete="off"> 
+	</div>
+
+	<div class="form-group col-md-4 col-ms-6">
+		<lable class="">Completion Month|Year <span class="text-red">*</span></lable>
+		<input type="text" class="form-control fstinput monthonly" placeholder="mm/yyyy" name="completion_12th" id="completion_12th" autocomplete="off"> 
+	</div>
+
+</div>
+
+
+<span class="toggle-grn-btn active row" id="study_add">
+   <span class="circle"><i class="fa fa-plus text-white font-16 cross-btn"></i></span>
+    <span class="font-14 ml-5 font-weight-600">Add More Studies</span>
+</span>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script type="text/javascript" src="jquery.inputmask.bundle-new.js"></script>
+
+<script type="text/javascript">
+
+$(document).ready(function(){
+    initdate();
+});
+
+//Studies Background
+
+  let count = 1;
+
+  $("#study_add").click( function(){
+
+    $("#study_add").before("<div class='form-group row'><lable class=''>Completion Month|Year</lable><input type='text' placeholder='mm/yyyy' class='form-control fstinput monthonly' name='more_completion_"+count+"' id='more_completion_"+count+"' autocomplete='off'/> </div></div>");
+
+           $("#remove_study_area i").click(function(){
+             $(this).parent().parent().parent().remove();            
+          });
+
+        initdate();
+
+        $('.selectpicker').selectpicker('refresh');
+
+        count++;
+  });
+
+
+function initdate(){    
+    $('.monthonly').each(function(){       
+        //$(this).datetimepicker({format: 'MM-YYYY'});
+          $('.monthonly').inputmask("datetime",{   
+                 mask: "1/y",
+                placeholder: "mm/yyyy",
+                leapday: "donotuse",
+                separator: "/",
+                alias: "mm/dd/yyyy"
+          });
+    });
+}
+
+</script>
+<br><br><br><br>
